@@ -1,5 +1,4 @@
 local f = CreateFrame("Frame")
-local s = string.gsub(JOINED_PARTY, "%%s", "")
 
 function Mark(unit)
   local _, n = UnitClass(unit)
@@ -16,10 +15,9 @@ function Mark(unit)
   end
 end
 
-f:RegisterEvent("CHAT_MSG_SYSTEM")
+f:RegisterEvent("PARTY_LOOT_METHOD_CHANGED")
 f:SetScript("OnEvent", function()
-  local i = string.find(arg1, s)
-  if i and IsPartyLeader() then
+  if IsPartyLeader() then
     Mark("player")
     for n = 1, GetNumPartyMembers() do
       Mark("party"..n)
