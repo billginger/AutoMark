@@ -1,0 +1,5 @@
+## Interface: 11200
+## Title: Auto Mark 1.0
+## Notes: Automatically mark party members based on their classes.
+
+AutoMark.lua
