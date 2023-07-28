@@ -1,7 +1,7 @@
 ## Interface: 11200
-## Title: Auto Mark 1.0
+## Title: Auto Mark
 ## Notes: Automatically mark party members based on their classes.
-## Version 1.0.0
+## Version 1.0.1
 ## Author: Fenggong Jiang (jfg@163.com)
 ## URL: https://github.com/billginger/AutoMark
 
