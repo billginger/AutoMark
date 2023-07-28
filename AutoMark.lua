@@ -1,26 +1,26 @@
 local f = CreateFrame("Frame")
 
-function Mark(unit)
-  local _, n = UnitClass(unit)
-  if n == "WARRIOR" or n == "PALADIN" then
-    SetRaidTarget(unit, 2)
-  elseif n == "HUNTER" or n == "ROGUE" then
-    SetRaidTarget(unit, 3)
-  elseif n == "PRIEST" or n == "DRUID" then
-    SetRaidTarget(unit, 5)
-  elseif n == "MAGE" or n == "WARLOCK" then
-    SetRaidTarget(unit, 1)
-  else
-    SetRaidTarget(unit, 6)
-  end
-end
-
 f:RegisterEvent("PARTY_LOOT_METHOD_CHANGED")
 f:SetScript("OnEvent", function()
   if IsPartyLeader() then
-    Mark("player")
+    local t = {"player", "pet"}
     for n = 1, GetNumPartyMembers() do
-      Mark("party"..n)
+      table.insert(t, "party"..n)
+      table.insert(t, "partypet"..n)
+    end
+    for k, v in pairs(t) do
+      local _, c = UnitClass(v)
+      if c == "WARRIOR" or c == "PALADIN" then
+        SetRaidTarget(v, 2)
+      elseif c == "HUNTER" or c == "ROGUE" then
+        SetRaidTarget(v, 3)
+      elseif c == "PRIEST" or c == "DRUID" then
+        SetRaidTarget(v, 5)
+      elseif c == "MAGE" or c == "WARLOCK" then
+        SetRaidTarget(v, 1)
+      else
+        SetRaidTarget(v, 6)
+      end
     end
   end
 end)
