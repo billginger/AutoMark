@@ -10,13 +10,13 @@ f:SetScript("OnEvent", function()
     end
     for k, v in pairs(t) do
       local _, c = UnitClass(v)
-      if c == "WARRIOR" or c == "PALADIN" then
+      if c == "WARRIOR" then
         SetRaidTarget(v, 2)
-      elseif c == "HUNTER" or c == "ROGUE" then
+      elseif c == "HUNTER" or c == "WARLOCK" then
         SetRaidTarget(v, 3)
       elseif c == "PRIEST" or c == "DRUID" then
         SetRaidTarget(v, 5)
-      elseif c == "MAGE" or c == "WARLOCK" then
+      elseif c == "MAGE" or c == "ROGUE" then
         SetRaidTarget(v, 1)
       else
         SetRaidTarget(v, 6)
